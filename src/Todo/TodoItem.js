@@ -21,6 +21,7 @@ const styles = {
 }
 
 function TodoItem(props) {
+  const { removeTodo } = useContext(Context)
   const classes = [];
 
   if(props.todo.completed){
@@ -39,7 +40,7 @@ function TodoItem(props) {
       </strong>
       {props.todo.title} 
     </span>
-    <button className="rm">&times;</button>
+    <button className="rm" onClick={removeTodo.bind(null, props.todo.id)}>&times;</button>
     </li>
   )
 } 
