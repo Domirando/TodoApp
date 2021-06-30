@@ -43,14 +43,16 @@ function AddTodos({ onCreate }) {
   function submitHandler(event) {
     event.preventDefault()
 
-    if(input.value.trim()){
-      onCreate(input.value)
+    if(input.value().trim()){
+      onCreate(input.value())
+      input.clear()
+
       // setValue('')
     }
   }
   return (
     <form onSubmit={submitHandler}>
-      <input {...input} type="text" placeholder="Type todo... " style={styles.input} id="addTodo" />
+      <input {...input.bind} type="text" placeholder="Type todo... " style={styles.input} id="addTodo" />
       <button style={styles.btn} type="submit">Add</button>
     </form>
   )
