@@ -10,7 +10,7 @@ function App() {
     {id: 1, completed: false, title: 'Internship'},
     {id: 2, completed: false, title: 'Increase coding'},
     {id: 3, completed: false, title: 'Practice with coding'},
-    {id: 4, completed: false, title: 'Housework activites'},
+    {id: 4, completed: false, title: 'Housework activities'},
     {id: 5, completed: false, title: 'Look after to siblings'}, 
     {id: 6, completed: false, title: 'Teach siblings'} 
   ]
@@ -37,7 +37,7 @@ function App() {
   return (
     <Context.Provider value={{ removeTodo }}>
       <div className="container">
-        <h1>Reat Tutorial!</h1>
+        <h1>React Tutorial!</h1>
         <AddTodos onCreate={addTodo}/>
         {
           todos.length ? 
