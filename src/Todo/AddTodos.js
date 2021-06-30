@@ -19,7 +19,8 @@ const styles = {
     color: '#fff',
     backgroundColor: 'red',
     fontSize: '16px',
-    width: '5rem'
+    width: '5rem',
+    cursor: 'pointer'
   }
 }
 

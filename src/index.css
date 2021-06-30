@@ -21,6 +21,7 @@ code {
   border-radius: 50%;
   border: none;
   color: #fff;
+  cursor: pointer;
 }
 .done {
   text-decoration: line-through;
