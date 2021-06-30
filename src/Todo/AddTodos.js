@@ -9,7 +9,7 @@ const styles = {
     padding: '0.5rem 1rem',
     border: '1px solid #ccc',
     fontSize: '16px',
-    width: '65%',
+    width: '65%'
   },
   btn: {
     height: '2.5rem',
