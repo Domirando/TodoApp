@@ -23,19 +23,34 @@ const styles = {
   }
 }
 
+function useInputValue(defaultValue = '') {
+  const [value, setValue] = useState(defaultValue);
+
+  return {
+    bind: {
+      value,
+      onChange: event => setValue(event.target.value) 
+    },
+    clear: () => setValue(''),
+    value: () => value
+  }
+
+}
+
 function AddTodos({ onCreate }) {
-  const [value, setValue] = useState('');
+  const input = useInputValue('')
+
   function submitHandler(event) {
     event.preventDefault()
 
-    if(value.trim()){
-      onCreate(value)
-      setValue('')
+    if(input.value.trim()){
+      onCreate(input.value)
+      // setValue('')
     }
   }
   return (
     <form onSubmit={submitHandler}>
-      <input value={value} onChange={event => setValue(event.target.value)} type="text" placeholder="Type todo... " style={styles.input} id="addTodo" />
+      <input {...input} type="text" placeholder="Type todo... " style={styles.input} id="addTodo" />
       <button style={styles.btn} type="submit">Add</button>
     </form>
   )
