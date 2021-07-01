@@ -3,9 +3,11 @@ import React, { useEffect } from 'react';
 import TodoList from './Todo/TodoList';
 import AddTodos from './Todo/AddTodos';
 import Context from './context';
+import Loader from './loader.js';
 
 function App() {
   const [todos, setTodos] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/todos?_limit=6')
       .then(response => response.json())
@@ -39,6 +41,7 @@ function App() {
       <div className="container">
         <h1>React Tutorial!</h1>
         <AddTodos onCreate={addTodo}/>
+        {loading && <Loader />}
         {
           todos.length ? 
             <TodoList todos={todos} onToggle={toggleTodo}/> : 
