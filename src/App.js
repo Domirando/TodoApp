@@ -1,9 +1,15 @@
 import './App.css';
 import React, { useEffect } from 'react';
 import TodoList from './Todo/TodoList';
-import AddTodos from './Todo/AddTodos';
+// import AddTodos from './Todo/AddTodos';
 import Context from './context';
 import Loader from './loader.js';
+
+const AddTodos = React.lazy(() => new Promise(resolve => {
+  setTimeout(() => {
+    resolve(import('./Todo/AddTodos.js'))
+  }, 3000)
+}))
 
 function App() {
   const [todos, setTodos] = React.useState([]);
@@ -14,6 +20,7 @@ function App() {
       .then(todos => {
         setTimeout(() => {
           setTodos(todos)
+          setLoading(false)
         }, 2000)
       })
   }, [])
@@ -40,12 +47,14 @@ function App() {
     <Context.Provider value={{ removeTodo }}>
       <div className="container">
         <h1>React Tutorial!</h1>
-        <AddTodos onCreate={addTodo}/>
+        <React.Suspense fallback="Loading...">
+          <AddTodos onCreate={addTodo}/>
+        </React.Suspense>
         {loading && <Loader />}
         {
-          todos.length ? 
-            <TodoList todos={todos} onToggle={toggleTodo}/> : 
-            <p>No todos!</p>
+          todos.length ? (
+            <TodoList todos={todos} onToggle={toggleTodo}/> ) : 
+            (loading ? null : (<p>No todos!</p>))
         }
       </div>
     </Context.Provider>
