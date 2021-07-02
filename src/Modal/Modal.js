@@ -7,6 +7,7 @@ export default class Modal extends React.Component{
   }
   render(){
     return
+      // eslint-disable-next-line no-unreachable
       (
       <React.Fragment>
         <button onClick={() => this.setState({isOpen: true})}>Open modal</button>
