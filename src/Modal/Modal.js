@@ -1,26 +1,25 @@
 import React from 'react';
 import './Modal.css'
 
-class Modal extends React.Component{
+export default class Modal extends React.Component{
   state = {
     isOpen: false
   }
   render(){
-    return
-      // eslint-disable-next-line no-unreachable
-      (
+    return(
       <React.Fragment>
         <button onClick={() => this.setState({isOpen: true})}>Open modal</button>
 
-        {this.state.isOpen && (<div className="modal">
+        {this.state.isOpen && (
+        <div className="modal">
           <div className="modal-body">
             <h1>Modal window</h1>
-            <p>lorem15 lorem15 lorem15 lorem15 lorem15 lorem15 lorem15 lorem15 lorem15 </p>
+            <p>lorem ipsum</p>
             <button onClick={() => this.setState({isOpen: false})}>Close modal</button>
-        </div>
-        </div>)}
+          </div>
+        </div>)
+        }
       </React.Fragment>
     )
   }
 }
-export default Modal;
