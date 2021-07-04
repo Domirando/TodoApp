@@ -1,3 +1,10 @@
+.btn{
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 3px;
+}
 .modal{
   position: fixed;
   top: 0;
